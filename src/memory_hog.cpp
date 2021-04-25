@@ -5,7 +5,9 @@ int main()
     crow::SimpleApp app;
 
     CROW_ROUTE(app, "/")([](){
-        new char[1000000000];
+        for (int i=0; i < 100; i++){
+            char *lost = new char[1000000000];
+        }
         return "Hello world";
     });
 
