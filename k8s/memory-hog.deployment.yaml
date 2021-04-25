@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: olss-memory-hog
+  namespace: olss-memory-hog
+  labels:
+    app: olss-memory-hog
+spec:
+  selector:
+    matchLabels:
+      app: olss-memory-hog
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: olss-memory-hog
+    spec:
+      containers:
+      - name: olss-memory-hog
+        image: cnafsd/memoryhog:latest
+        resources:
+          requests:
+            cpu: 250m
+            memory: 30Mi
+          limits:
+            cpu: "1"
+            memory: 30Mi
+        ports:
+          - name: web
+            containerPort: 8080

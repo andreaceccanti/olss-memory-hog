@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  olss-memory-hog
+  namespace: olss-memory-hog
+  labels:
+    app: olss-memory-hog
+spec:
+  selector:
+    app:  olss-memory-hog
+  type:  ClusterIP
+  ports:
+  - name:  web
+    port:  8080
+    targetPort:  web
