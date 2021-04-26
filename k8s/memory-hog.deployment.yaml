@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: olss-memory-hog
-        image: andreaceccanti/olss-memory-hog:latest
+        image: andreaceccanti/olss-memory-hog:v0.0.2
         resources:
           requests:
             cpu: 250m

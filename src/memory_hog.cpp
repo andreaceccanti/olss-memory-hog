@@ -4,11 +4,16 @@ int main()
 {
     crow::SimpleApp app;
 
+    const int CHUNK_SIZE = 10'000'000;
+
     CROW_ROUTE(app, "/")([](){
-        for (int i=0; i < 100; i++){
-            char *lost = new char[1000000000];
+        char *lost = new char[CHUNK_SIZE];
+
+        for (int i=0; i < CHUNK_SIZE; i++){
+            lost[i] = i;
         }
-        return "Hello world";
+
+        return "Hello world!";
     });
 
     app.port(8080).multithreaded().run();
