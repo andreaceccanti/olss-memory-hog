@@ -1,18 +1,15 @@
 #include "crow_all.h"
+#include <numeric>
 
 int main()
 {
     crow::SimpleApp app;
 
-    const int CHUNK_SIZE = 10'000'000;
+    constexpr int CHUNK_SIZE = 10'000'000 / sizeof(int);
 
     CROW_ROUTE(app, "/")([](){
-        char *lost = new char[CHUNK_SIZE];
-
-        for (int i=0; i < CHUNK_SIZE; i++){
-            lost[i] = i;
-        }
-
+        auto lost = new int[CHUNK_SIZE];
+        std::iota(lost, lost + CHUNK_SIZE, 0);
         return "Hello world!";
     });
 
